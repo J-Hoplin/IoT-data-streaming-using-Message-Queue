@@ -1,0 +1,14 @@
+{
+  "name": "client-producer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.2.5",
+    "amqplib": "^0.10.3",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

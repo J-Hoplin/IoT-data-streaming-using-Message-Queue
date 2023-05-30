@@ -1,0 +1,16 @@
+{
+  "name": "server-consumer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/amqplib": "^0.10.1",
+    "@types/node": "^20.2.5",
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.0.3",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
