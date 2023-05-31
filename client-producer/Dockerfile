@@ -9,6 +9,7 @@ WORKDIR /consumer
 COPY . /consumer
 RUN yarn install\
   && yarn tsc
-  
-CMD [ "consume" ]
+
+
+CMD [ "server" ]
 ENTRYPOINT [ "yarn","run" ]
