@@ -6,9 +6,11 @@
   "dependencies": {
     "@types/amqplib": "^0.10.1",
     "@types/node": "^20.2.5",
+    "@types/winston": "^2.4.4",
     "amqplib": "^0.10.3",
     "dotenv": "^16.0.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "winston": "^3.9.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.1"

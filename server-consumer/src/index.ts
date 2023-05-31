@@ -1,6 +1,6 @@
 import * as amqp from 'amqplib'
-import { channel } from 'diagnostics_channel'
 import { config } from 'dotenv'
+import logger from './logger'
 
 type QueueCallBack = (msg: amqp.ConsumeMessage) => void
 
