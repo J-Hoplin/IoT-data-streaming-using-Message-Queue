@@ -35,6 +35,7 @@ export const publisher = async (severity: string, message: string) => {
       durable: true,
     });
     channel.publish(exchangeName, severity, Buffer.from(message));
+    logger.info(`Message published - ${severity} - ${message}`);
     await channel.close();
   } catch (err) {
     if (err instanceof Error) {
