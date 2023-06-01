@@ -10,6 +10,7 @@ COPY . /consumer
 RUN yarn install\
   && yarn tsc
 
+EXPOSE 4500
 
 CMD [ "server" ]
 ENTRYPOINT [ "yarn","run" ]
