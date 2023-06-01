@@ -1,13 +1,12 @@
-import { TransformableInfo } from 'logform'
-import { config, createLogger, format, transports } from 'winston'
-import * as winston from 'winston'
-import * as path from 'path'
+import { TransformableInfo } from "logform";
+import { config, createLogger, format, transports } from "winston";
+import * as winston from "winston";
+import * as path from "path";
 
 interface CustomOption {
-  levels: config.AbstractConfigSetLevels,
-  colors: config.AbstractConfigSetColors
+  levels: config.AbstractConfigSetLevels;
+  colors: config.AbstractConfigSetColors;
 }
-
 
 const options: CustomOption = {
   levels: {
@@ -15,19 +14,18 @@ const options: CustomOption = {
     warn: 1,
     info: 2,
     debug: 3,
-    other: 4
+    other: 4,
   },
   colors: {
-    error: 'red',
-    warn: 'yellow',
-    info: 'green',
-    debug: 'magenta',
-    other: 'white'
-  }
-}
+    error: "red",
+    warn: "yellow",
+    info: "green",
+    debug: "magenta",
+    other: "white",
+  },
+};
 
-
-winston.addColors(options.colors)
+winston.addColors(options.colors);
 
 interface Levels extends winston.Logger {
   error: winston.LeveledLogMethod;
@@ -37,37 +35,36 @@ interface Levels extends winston.Logger {
   other: winston.LeveledLogMethod;
 }
 
-
 const logger: Levels = <Levels>createLogger({
   levels: options.levels,
   format: format.combine(
     format.label({
-      label: '[Papago Translation Command]'
+      label: "[DHT-11-Client Subscriber]",
     }),
     format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss'
+      format: "YYYY-MM-DD HH:mm:ss",
     }),
     format.colorize(),
     format.printf((info: TransformableInfo) => {
-      return `${info.timestamp} - ${info.level} : ${info.label} ${info.message}`
+      return `${info.timestamp} - ${info.level} : ${info.label} ${info.message}`;
     })
   ),
   transports: [
     new transports.Console({
-      level: 'other'
+      level: "other",
     }),
     new transports.File({
-      filename: path.join(__dirname, "../../logfile/common.log")
+      filename: path.join(__dirname, "../../logfile/common.log"),
     }),
     new transports.File({
       filename: path.join(__dirname, "../../logfile/error.log"),
-      level: 'error'
+      level: "error",
     }),
     new transports.File({
       filename: path.join(__dirname, "../../logfile/debug.log"),
-      level: 'debug'
-    })
-  ]
-})
+      level: "debug",
+    }),
+  ],
+});
 
-export default logger
+export default logger;
