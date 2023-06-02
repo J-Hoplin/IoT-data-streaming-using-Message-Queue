@@ -1,23 +1,24 @@
 import * as amqp from "amqplib";
 import { config } from "dotenv";
 import logger from "../logger";
+import { QueueCallBack } from "../types";
 
 config({
-  path: `${__dirname}/../env/.env`,
+  path: `${__dirname}/../../env/.env`,
 });
 
-type QueueCallBack = (msg: amqp.ConsumeMessage) => void | Promise<void>;
-
 class ServerConsumer {
-  private static readonly infoCBAdditionalActivity: QueueCallBack[] = [];
-  private static readonly errCBAdditionalActivity: QueueCallBack[] = [];
+  private static infoCBAdditionalActivity: QueueCallBack[] = [];
+  private static errCBAdditionalActivity: QueueCallBack[] = [];
 
-  public static addInfoCBActivity(cb: QueueCallBack) {
-    ServerConsumer.infoCBAdditionalActivity.push(cb);
+  public static addInfoCBActivity(...cb: QueueCallBack[]) {
+    ServerConsumer.infoCBAdditionalActivity =
+      ServerConsumer.infoCBAdditionalActivity.concat(cb);
   }
 
-  public static addErrCBActivity(cb: QueueCallBack) {
-    ServerConsumer.errCBAdditionalActivity.push(cb);
+  public static addErrCBActivity(...cb: QueueCallBack[]) {
+    ServerConsumer.errCBAdditionalActivity =
+      ServerConsumer.errCBAdditionalActivity.concat(cb);
   }
 
   private async infoQueueCB(msg: amqp.ConsumeMessage) {

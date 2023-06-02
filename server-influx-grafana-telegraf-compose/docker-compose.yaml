@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+  influxdb:
+    image: influxdb
+    container_name: server-influxdb
+    restart: "unless-stopped"
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_USERNAME=hoplin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password
+      - DOCKER_INFLUXDB_INIT_ORG=hoplinspace
+      - DOCKER_INFLUXDB_INIT_BUCKET=DHT11-Measurement
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN="influx-admin-token"
+    networks:
+      - server-network
+  grafana:
+    image: grafana/grafana
+    container_name: server-grafana
+    restart: "unless-stopped"
+    ports:
+      - "6500:3000"
+    networks:
+      - server-network
+  telegraf:
+    image: telegraf
+    container_name: server-telegraf
+    restart: "unless-stopped"
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb
+    ports:
+      - "8125:8125"
+    networks:
+      - server-network
+networks:
+  server-network:
+    driver: bridge
