@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@influxdata/influxdb-client": "^1.33.2",
     "@types/amqplib": "^0.10.1",
     "@types/node": "^20.2.5",
     "@types/winston": "^2.4.4",
