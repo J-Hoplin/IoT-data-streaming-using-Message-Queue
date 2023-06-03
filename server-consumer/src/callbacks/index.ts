@@ -1,5 +1,4 @@
-import { config } from "dotenv";
+import { influxDBTmpHmdInsert } from "./influxDBTmpHmdInsert";
+import { influxDBErrInsert } from "./influxDBErrInsert";
 
-config({
-  path: `${__dirname}/../env/.env`,
-});
+export { influxDBTmpHmdInsert, influxDBErrInsert };

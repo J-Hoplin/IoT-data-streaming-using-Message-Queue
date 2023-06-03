@@ -4,7 +4,7 @@ import logger from "../logger";
 import { QueueCallBack } from "../types";
 
 config({
-  path: `${__dirname}/../../env/.env`,
+  path: `${__dirname}/../../../server-dotenv/.env`,
 });
 
 class ServerConsumer {
@@ -23,9 +23,16 @@ class ServerConsumer {
 
   private async infoQueueCB(msg: amqp.ConsumeMessage) {
     logger.info(`[x] INFO - ${msg.content.toString()}`);
-    await Promise.all(
-      ServerConsumer.infoCBAdditionalActivity.map((cb) => cb(msg))
-    );
+    try {
+      await Promise.all(
+        ServerConsumer.infoCBAdditionalActivity.map((cb) => cb(msg))
+      );
+    } catch (err) {
+      // Ignore additional activity exception
+      if (err instanceof Error) {
+        logger.error(err.message);
+      }
+    }
   }
 
   private async errorQueueCB(msg: amqp.ConsumeMessage) {
@@ -37,9 +44,15 @@ class ServerConsumer {
     logger.error(
       `[x] ${msg.fields.routingKey.toUpperCase()} - ${msg.content.toString()}`
     );
-    await Promise.all(
-      ServerConsumer.errCBAdditionalActivity.map((cb) => cb(msg))
-    );
+    try {
+      await Promise.all(
+        ServerConsumer.errCBAdditionalActivity.map((cb) => cb(msg))
+      );
+    } catch (err) {
+      if (err instanceof Error) {
+        logger.error(err.message);
+      }
+    }
   }
 
   private async enrollChannelConsume(
