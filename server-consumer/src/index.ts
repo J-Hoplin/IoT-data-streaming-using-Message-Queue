@@ -1,7 +1,8 @@
 import { ServerConsumer } from "./consumer";
-import { influxDBTmpHmdInsert } from "./callbacks/influxDBTmpHmdInsert";
+import { influxDBTmpHmdInsert, influxDBErrInsert } from "./callbacks";
 
 ServerConsumer.addInfoCBActivity(influxDBTmpHmdInsert);
+ServerConsumer.addErrCBActivity(influxDBErrInsert);
 
 const consumer = new ServerConsumer();
 
