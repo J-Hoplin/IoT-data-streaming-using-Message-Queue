@@ -5,5 +5,4 @@ ServerConsumer.addInfoCBActivity(influxDBTmpHmdInsert);
 ServerConsumer.addErrCBActivity(influxDBErrInsert);
 
 const consumer = new ServerConsumer();
-
 consumer.consume();
