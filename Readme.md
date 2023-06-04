@@ -4,7 +4,7 @@
 
 **This document do not provide a package installation method such as tkinter or etc. Please install it on your own. Make an issue if something is wrong or not working on process**
 
-## Suggested Block Diagram
+## System Block Diagram
 
 ![img](./img/blocdiagram.png)
 
