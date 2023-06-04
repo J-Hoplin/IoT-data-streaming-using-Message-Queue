@@ -34,7 +34,8 @@ while True:
     try:
         requests.post("http://localhost:4500/publish", data={
             "severity": payload_severity,
-            "message": payload_message
+            "message": payload_message,
+            "exchangeName": "DHT-11-EXHANGE"
         })
     except requests.exceptions.ConnectionError as e:
         print(f"Connection error occured. Please check API Server")

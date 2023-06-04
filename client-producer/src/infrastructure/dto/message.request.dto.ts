@@ -1,4 +1,6 @@
 export class MessageRequestDto {
+  exchangeName!: string;
+
   severity!: string;
 
   message!: string;
