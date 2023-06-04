@@ -140,6 +140,12 @@ After setting `InfluxDB - Grafana` start `Consumer` and `API Server` and `Monito
   yarn run start
   ```
 
+  Connect to `localhost:3000/docs` in server machine browser for API endpoints documet
+
+  ```
+  localhost:3000/docs
+  ```
+
 - [Monitoring GUI](./monitoring-gui/)
 
   ```
@@ -181,6 +187,12 @@ yarn install
 yarn tsc
 
 node dist/www.js
+```
+
+Connect to `localhost:3000/docs` in client machine browser for API endpoints documet
+
+```
+localhost:3000/docs
 ```
 
 If producer start normally it will publish message to rabbit mq
