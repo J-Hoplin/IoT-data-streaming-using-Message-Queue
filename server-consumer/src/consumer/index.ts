@@ -60,7 +60,7 @@ class ServerConsumer {
     queueName: string,
     cb: QueueCallBack
   ) {
-    console.log(queueName);
+    logger.info(`Queue connected - ${queueName}`);
     await channel.consume(
       queueName,
       async (msg) => {
@@ -136,11 +136,11 @@ class ServerConsumer {
       queueNCallback.forEach(async (x) => {
         await this.enrollChannelConsume(channel, x[0], x[1]);
       });
-      console.log("Consumer ready! Listening for message...");
+      logger.info("Consumer ready! Listening for message...");
     } catch (err) {
-      console.log(err);
+      logger.info(err);
       if (err instanceof Error) {
-        console.error(err.message);
+        logger.error(err.message);
       }
       channel.close();
     }

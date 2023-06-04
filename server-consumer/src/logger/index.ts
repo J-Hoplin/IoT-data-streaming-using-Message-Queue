@@ -39,7 +39,7 @@ const logger: Levels = <Levels>createLogger({
   levels: options.levels,
   format: format.combine(
     format.label({
-      label: "[DHT-11-Client Subscriber]",
+      label: "[DHT-11 Server-Subscriber]",
     }),
     format.timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
