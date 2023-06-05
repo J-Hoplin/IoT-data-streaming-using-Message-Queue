@@ -5,7 +5,7 @@ import { publisher } from "../../publisher";
 export const publishService = async (
   body: MessageRequestDto
 ): Promise<boolean> => {
-  const { message, severity, exchangeName } = body;
-  await publisher(severity, message, exchangeName);
+  const { message, severity, exchangeName, exchangeType } = body;
+  await publisher(severity, message, exchangeName, exchangeType);
   return true;
 };

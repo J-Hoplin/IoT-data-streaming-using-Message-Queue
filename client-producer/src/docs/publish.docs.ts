@@ -14,14 +14,22 @@ export const publishRequest = {
                 severity: {
                   type: "string",
                   example: "info",
-                  enum: ["info", "warn", "error"],
                 },
                 message: {
                   type: "string",
                   example: "message",
                 },
+                exchangeName: {
+                  type: "string",
+                  example: "exchange name"
+                },
+                exchangeType: {
+                  type: "string",
+                  exmaple: "direct",
+                  enum: ["direct", "fanout", "topic", "header", "x-consistent-hash"]
+                }
               },
-              required: ["severity", "message"],
+              required: ["severity", "message", "exchangeName", "exchangeType"],
             },
           },
         },
