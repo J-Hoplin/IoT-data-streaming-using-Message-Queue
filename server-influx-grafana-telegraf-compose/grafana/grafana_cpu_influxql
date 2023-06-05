@@ -1,0 +1,4 @@
+from(bucket: "client-resource")
+  |> range(start: -5m)
+  |> filter(fn: (r) => r._measurement == "resource")
+  |> filter(fn: (r) => r._field == "cpu" and r.indicator == "client-resource")

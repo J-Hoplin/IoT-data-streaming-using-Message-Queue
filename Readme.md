@@ -6,11 +6,13 @@
 
 ## System Block Diagram
 
-![img](./img/blocdiagram.png)
+![img](./img/blockdiagram.png)
 
 ## Message Queue Design
 
-![img](./img/message-queue-design.png)
+![img](./img/message-queue-design-dht11.png)
+
+![img](./img/message-queue-design-metrics.png)
 
 **Require 3 computers to make experiment including Raspberry Pi4**
 
