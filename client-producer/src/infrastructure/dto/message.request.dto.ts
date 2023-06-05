@@ -5,6 +5,8 @@ export class MessageRequestDto {
 
   message!: string;
 
+  exchangeType!: string;
+
   constructor(data: MessageRequestDto) {
     Object.assign(this, data);
   }

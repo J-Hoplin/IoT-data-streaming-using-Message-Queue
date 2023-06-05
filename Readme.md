@@ -106,7 +106,7 @@ After execute docker container of rabbit mq you need to edit `.env` file of both
 
 ### 2. Server setting
 
-First you need to start `InfluxDB - Grafana` docker compose located in [here](./server-influx-grafana-compose/)
+First you need to start `InfluxDB - Grafana` docker compose located in [here](./server-influx-grafana-compose/). If you want to use telegraf also, please follow this [document](./docs/telegraf-settings.md).
 
 ```
 cd ./server-influx-grafana-compose

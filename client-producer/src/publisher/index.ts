@@ -28,11 +28,12 @@ amqp
 export const publisher = async (
   severity: string,
   message: string,
-  exchangeName: string
+  exchangeName: string,
+  exchangeType: string
 ) => {
   try {
     const channel = await pubConnection.createChannel();
-    await channel.assertExchange(exchangeName, "direct", {
+    await channel.assertExchange(exchangeName, exchangeType, {
       durable: true,
     });
     channel.publish(exchangeName, severity, Buffer.from(message));
