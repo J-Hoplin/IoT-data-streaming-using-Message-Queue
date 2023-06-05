@@ -76,6 +76,9 @@ Connect to InfluxDB UI
    ```
 
 6. Restart telegraf container
+
    ```
    docker restart server-telegraf
    ```
+
+7. InfluxQL for system matrics, used in grafana located in [here](../server-influx-grafana-telegraf-compose/grafana/)

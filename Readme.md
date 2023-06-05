@@ -215,7 +215,7 @@ and save it as time-series data to influx db
 finally you can view datas in realtime via monitoring GUI and grafana dashboard
 
 ![img](./img/gui-res.png)
-![img](./img/grafana-res.png)
+![img](./img/grafana-example.png)
 
 ### 4. Reason why I made producer as API type
 
